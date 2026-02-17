@@ -10,52 +10,64 @@ import jakarta.persistence.Table;
 @Table(name = "usuarios") 
 public class Usuario {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private int id;
-	private String nombre;
-	private String email;
-	private String password;
+    private Long id;
+    
+    private String nombre;
+    private String email;
+    private String usuario;
+    private String contrasena;
 
-	public Usuario() {
-	}
+    public Usuario() {
+    }
 
-	public Usuario(int id, String nombre, String email, String password) {
-		this.id = id;
-		this.nombre = nombre;
-		this.email = email;
-		this.password = password;
-	}
+    public Usuario(Long id, String nombre, String email, String usuario, String contrasena) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 }
