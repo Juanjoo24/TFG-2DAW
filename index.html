@@ -10,26 +10,34 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-5 d-flex align-items-center" href="index.html">
                 <img src="imagenes/logoTienda.png" alt="Logo ZapaJuan" style="height: 100px; width: auto; margin-right: 10px;">
-                ZapaJuan
+                <span class="brand-text">ZapaJuan</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="HTML/login.html">
-                            <i class="bi bi-door-open me-1"></i>Iniciar Sesión
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-2"></i>Cuenta
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="HTML/register.html">
-                            <i class="bi bi-person-plus me-1"></i>Registrarse
-                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="accountDropdown">
+                            <li>
+                                <a class="dropdown-item" href="HTML/login.html">
+                                    <i class="bi bi-door-open me-2"></i>Iniciar Sesión
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="HTML/register.html">
+                                    <i class="bi bi-person-plus me-2"></i>Registrarse
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

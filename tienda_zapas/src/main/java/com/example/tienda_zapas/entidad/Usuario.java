@@ -7,14 +7,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "usuarios") 
+@Table(name = "clientes") 
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Long id;
+    private Long id; 
     
     private String nombre;
+    private String apellido; 
     private String email;
     private String usuario;
     private String contrasena;
@@ -22,14 +23,16 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String email, String usuario, String contrasena) {
+    public Usuario(Long id, String nombre, String apellido, String email, String usuario, String contrasena) {
         this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.email = email;
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
+    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -45,6 +48,14 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getEmail() {
