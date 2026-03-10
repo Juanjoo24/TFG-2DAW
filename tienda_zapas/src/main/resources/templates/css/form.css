@@ -1,0 +1,35 @@
+.logo {
+    width: auto;
+    height: 330px;
+}
+
+header {
+    text-align: center;
+    background: transparent;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+form{
+    text-align: center;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.login{
+    margin-top: 50px;
+    text-align: center;
+}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://imgs.search.brave.com/DfGEDkEaDQSPuQFnq2EAWiPWKCzK1SeiORLoIu4PI-o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDEyNDgz/NDQ0LmpwZw');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}

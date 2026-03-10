@@ -1,7 +1,7 @@
-package com.example.tienda_zapas.Controlador;
+package com.example.tienda_zapas.Controlador; 
 
-import com.example.tienda_zapas.Repositorio.UsuarioRepositorio;
 import com.example.tienda_zapas.entidad.Usuario;
+import com.example.tienda_zapas.Repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UsuarioControlador {
 
     @Autowired
-    private UsuarioRepositorio usuarioRepository;
+    private UsuarioRepositorio usuarioRepositorio;
 
     @GetMapping("/registro")
-    public String mostrarFormularioRegistro(Model model) {
+    public String mostrarFormulario(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "register"; 
+        return "HTML/register"; 
     }
 
     @PostMapping("/registro")
-    public String registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-        usuarioRepository.save(usuario);
-        return "redirect:/login?exito"; 
+    public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+        usuarioRepositorio.save(usuario);
+        return "redirect:/HTML/login?exito";
     }
 }
