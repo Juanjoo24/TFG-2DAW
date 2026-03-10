@@ -1,10 +1,9 @@
-# Usamos una imagen de Java 17
 FROM eclipse-temurin:17-jdk-alpine
-# Directorio de trabajo
 WORKDIR /app
-# Copiamos el contenido del proyecto
 COPY . .
-# Construimos el proyecto (saltando tests para ir rápido)
+# Permisos para el ejecutable de Maven
+RUN chmod +x mvnw
+# Construcción
 RUN ./mvnw clean package -DskipTests
-# Comando para ejecutar la aplicación
+# Ejecución (revisa que el nombre del .jar sea el correcto en tu carpeta target)
 ENTRYPOINT ["java", "-jar", "target/tienda_zapas-0.0.1-SNAPSHOT.jar"]
