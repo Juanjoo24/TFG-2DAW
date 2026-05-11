@@ -1,44 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Pillamos el carrito o lo creamos vacío
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     
-    const actualizarContador = () => {
-        const btnFinalizar = document.getElementById('btn-finalizar');
-        const countFinal = document.getElementById('count-final');
-        if (btnFinalizar && countFinal) {
-            btnFinalizar.style.display = carrito.length > 0 ? 'block' : 'none';
-            countFinal.innerText = carrito.length;
+    const btnCesta = document.getElementById('btn-finalizar');
+    const contador = document.getElementById('count-final');
+
+    // Función para que el botón de la cesta se vea o no
+    function revisarBoton() {
+        if (carrito.length > 0) {
+            btnCesta.style.display = 'block';
+            contador.innerText = carrito.length;
+        } else {
+            btnCesta.style.display = 'none';
         }
-    };
+    }
 
-    document.querySelectorAll('.btn-add-cart').forEach((boton) => {
-        boton.addEventListener('click', (e) => {
-            const cardBody = e.target.closest('.card-body');
+    revisarBoton();
+
+    document.querySelectorAll('.btn-dark-card').forEach(boton => {
+        boton.addEventListener('click', function() {
             
-            const nombreElemento = cardBody.querySelector('h5.card-title');
-            const precioElemento = cardBody.querySelector('p.text-primary');
-
-            if (nombreElemento && precioElemento) {
-                const nombreZapa = nombreElemento.innerText.trim();
-                const precioTexto = precioElemento.innerText;
-                const precioNum = parseFloat(precioTexto.replace(/[^\d.,]/g, '').replace(',', '.'));
-
-                // Guardamos el objeto con el nombre real y el precio 
-				
-                carrito.push({ nombre: nombreZapa, precio: precioNum });
-                localStorage.setItem('carrito', JSON.stringify(carrito));
-
+            // Buscamos los datos de la zapa
+            const card = this.closest('.card');
+            const nombre = card.querySelector('h6').innerText;
+            const precioStr = card.querySelector('.price-tag').innerText;
             
-                boton.innerText = "¡AÑADIDO!";
-                boton.className = "btn btn-success w-100";
-                setTimeout(() => {
-                    boton.innerText = "AÑADIR A LA CESTA";
-                    boton.className = "btn btn-dark w-100";
-                }, 700);
+            // Quitamos el € para que sea un número
+            const precio = parseFloat(precioStr.replace('€', ''));
 
-                actualizarContador();
-            }
+            // Metemos al carrito
+            carrito.push({
+                nombre: nombre,
+                precio: precio
+            });
+
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            this.innerText = "AÑADIDO";
+            this.style.background = "green";
+            
+            setTimeout(() => {
+                this.innerText = "AÑADIR";
+                this.style.background = ""; 
+            }, 700);
+
+            revisarBoton();
         });
     });
-
-    actualizarContador();
 });

@@ -15,13 +15,14 @@ public class Pedido {
     private LocalDateTime fecha;
 
     private Double total;
-
     private String estado;
-
     private String direccionEntrega;
 
+    // Nuevo campo para el correo del invitado
+    private String emailCliente;
+
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente", nullable = true) 
     private Usuario usuario;
 
     public Pedido() {
@@ -29,13 +30,9 @@ public class Pedido {
         this.estado = "PAGADO";
     }
 
-    public Pedido(Usuario usuario, Double total, String direccionEntrega) {
-        this.usuario = usuario;
-        this.total = total;
-        this.direccionEntrega = direccionEntrega;
-        this.fecha = LocalDateTime.now();
-        this.estado = "PAGADO";
-    }
+    // Getters y Setters para el nuevo campo
+    public String getEmailCliente() { return emailCliente; }
+    public void setEmailCliente(String emailCliente) { this.emailCliente = emailCliente; }
 
     // Getters y Setters
     public Integer getId() { return id; }

@@ -42,6 +42,7 @@ public class AdminControlador {
     }
 
     // --- GESTIÓN PROVEEDORES ---
+    
     @PostMapping("/provedor/guardar")
     public String guardarProvedor(@ModelAttribute Provedor provedor) {
         provedorRepo.save(provedor);
@@ -55,6 +56,7 @@ public class AdminControlador {
     }
 
     // --- GESTION ZAPATILLAS ---
+    
     @PostMapping("/producto/guardar")
     public String guardarProducto(@ModelAttribute Producto producto) {
         productoRepo.save(producto);
@@ -68,6 +70,7 @@ public class AdminControlador {
     }
     
     // --- GESTIÓN USUARIOS ---
+    
     @GetMapping("/usuario/eliminar/{id}")
     public String eliminarUsuario(@PathVariable Integer id) {
         usuarioRepo.deleteById(id);

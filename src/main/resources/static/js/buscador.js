@@ -1,53 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- ELEMENTOS ---
-    const searchInput = document.querySelector('.search-input');
-    // Seleccionamos las columnas (divs) que contienen las tarjetas
-    const productCards = document.querySelectorAll('.row.g-4 > div'); 
-    const btnAddCart = document.querySelectorAll('.btn-add-cart');
-    const btnFinalizar = document.getElementById('btn-finalizar');
-    const countFinal = document.getElementById('count-final');
+document.addEventListener('DOMContentLoaded', function() {
     
-    let carritoCount = 0;
+    const buscador = document.querySelector('.search-input');
+    // Cogemos todos los divs que envuelven las tarjetas de zapatillas
+    const zapatillas = document.querySelectorAll('.producto-item'); 
 
-    // --- LÓGICA DEL BUSCADOR (FILTRADO) ---
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
+    if (buscador) {
+        buscador.addEventListener('input', function(e) {
+            const texto = e.target.value.toLowerCase();
 
-            productCards.forEach(card => {
-                // Extraemos el texto de los campos que queremos filtrar
-                const marca = card.querySelector('.text-uppercase')?.textContent.toLowerCase() || "";
-                const nombre = card.querySelector('h6')?.textContent.toLowerCase() || "";
-                const modelo = card.querySelector('.text-secondary')?.textContent.toLowerCase() || "";
+            zapatillas.forEach(function(zapa) {
+                // Sacamos el nombre y la marca de la tarjeta
+                const marca = zapa.querySelector('p').innerText.toLowerCase();
+                const nombre = zapa.querySelector('h6').innerText.toLowerCase();
 
-                // Si el término está en alguno de los campos, se queda; si no, se oculta
-                if (marca.includes(term) || nombre.includes(term) || modelo.includes(term)) {
-                    card.style.display = 'block';
+                // Si el texto coincide con algo, se muestra, si no se oculta
+                if (marca.includes(texto) || nombre.includes(texto)) {
+                    zapa.style.display = 'block';
                 } else {
-                    card.style.display = 'none';
+                    zapa.style.display = 'none';
                 }
             });
         });
     }
-
-    // --- LÓGICA DE INTERACCIÓN (CARRITO) ---
-    btnAddCart.forEach(btn => {
-        btn.addEventListener('click', () => {
-            carritoCount++;
-            
-            // Actualizamos el contador del botón de compra
-            if (countFinal) countFinal.textContent = carritoCount;
-            if (btnFinalizar) btnFinalizar.style.display = 'block';
-
-            // Feedback visual: El botón se pone verde un segundo
-            const originalText = btn.textContent;
-            btn.textContent = '¡LISTO!';
-            btn.style.backgroundColor = '#28a745'; // Color verde
-            
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.backgroundColor = ''; // Vuelve al color del CSS (negro)
-            }, 800);
-        });
-    });
 });

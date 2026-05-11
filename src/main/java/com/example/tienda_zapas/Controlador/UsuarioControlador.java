@@ -29,9 +29,18 @@ public class UsuarioControlador {
 
     @GetMapping("/confirmacion")
     public String verConfirmacion(HttpSession session, Model model) {
-        String usuario = (String) session.getAttribute("nombreUsuario");
-        if (usuario == null) return "redirect:/login";
-        model.addAttribute("nombreUsuario", usuario);
+        // 1. Sacamos el nombre de la sesión
+        String nombreUsuario = (String) session.getAttribute("nombreUsuario");
+        if (nombreUsuario == null) return "redirect:/login";
+
+        // 2. Buscamos el objeto Usuario completo
+        Usuario u = usuarioRepositorio.findByUsuario(nombreUsuario);
+        
+        if (u != null) {
+            model.addAttribute("nombreUsuario", u.getUsuario());
+           
+        }
+
         return "html/confirmacion";
     }
 
