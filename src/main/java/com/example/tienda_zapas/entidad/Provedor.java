@@ -15,7 +15,6 @@ public class Provedor {
     private String telefono;
     private String correo;
 
-    // Constructor vacío obligatorio para JPA
     public Provedor() {}
 
     // --- GETTERS Y SETTERS ---

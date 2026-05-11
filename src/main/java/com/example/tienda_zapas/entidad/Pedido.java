@@ -30,11 +30,9 @@ public class Pedido {
         this.estado = "PAGADO";
     }
 
-    // Getters y Setters para el nuevo campo
     public String getEmailCliente() { return emailCliente; }
     public void setEmailCliente(String emailCliente) { this.emailCliente = emailCliente; }
 
-    // Getters y Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 

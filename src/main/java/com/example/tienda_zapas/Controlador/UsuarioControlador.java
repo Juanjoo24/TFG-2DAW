@@ -29,11 +29,10 @@ public class UsuarioControlador {
 
     @GetMapping("/confirmacion")
     public String verConfirmacion(HttpSession session, Model model) {
-        // 1. Sacamos el nombre de la sesión
+        // Verificamos que el usuario esté logueado
         String nombreUsuario = (String) session.getAttribute("nombreUsuario");
         if (nombreUsuario == null) return "redirect:/login";
 
-        // 2. Buscamos el objeto Usuario completo
         Usuario u = usuarioRepositorio.findByUsuario(nombreUsuario);
         
         if (u != null) {
@@ -92,7 +91,6 @@ public class UsuarioControlador {
         return "redirect:/login";
     }
 
-    // ESTE ES EL MÉTODO QUE TE FALTABA
     @PostMapping("/perfil/guardar")
     public String guardarCambiosPerfil(@RequestParam String nombre,
                                        @RequestParam String apellido,
