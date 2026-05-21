@@ -3,7 +3,6 @@ package com.example.tienda_zapas.Controlador;
 import com.example.tienda_zapas.entidad.Pedido;
 import com.example.tienda_zapas.Repositorio.PedidoRepositorio;
 import com.example.tienda_zapas.Repositorio.UsuarioRepositorio;
-import com.example.tienda_zapas.Servicios.EmailService;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,11 @@ public class PedidoControlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    @Autowired
-    private EmailService emailService;
-
     @PostMapping("/guardar")
     @SuppressWarnings("unchecked") 
     public ResponseEntity<?> guardarPedido(@RequestBody Map<String, Object> payload, HttpSession session) {
         try {
-        	
+            
             String email = (String) payload.get("emailCliente");
             String direccion = (String) payload.get("direccionEntrega");
             
@@ -69,10 +65,10 @@ public class PedidoControlador {
                 }
             }
 
-            // enviamos el correo a Mailtrap
+            // El bloque try-catch queda vacío de servicios de correo para que no envíe nada
             try {
-                emailService.enviarEmail(email, total.toString(), detalles.toString());
-                System.out.println("¡Correo enviado correctamente a " + email + "!");
+                // Se elimina la llamada a emailService.enviarEmail
+                System.out.println("Pedido procesado internamente (envío de email omitido).");
             } catch (Exception e) {
                 System.out.println("el mail ha fallado pero el pedido se ha guardado: " + e.getMessage());
             }

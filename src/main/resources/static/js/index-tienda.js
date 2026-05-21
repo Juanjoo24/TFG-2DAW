@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnCesta = document.getElementById('btn-finalizar');
     const contador = document.getElementById('count-final');
 
-    // Función para que el botón de la cesta se vea o no
     function revisarBoton() {
         if (carrito.length > 0) {
             btnCesta.style.display = 'block';
@@ -26,10 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const nombre = card.querySelector('h6').innerText;
             const precioStr = card.querySelector('.price-tag').innerText;
             
-            // Quitamos el € para que sea un número
             const precio = parseFloat(precioStr.replace('€', ''));
 
-            // Metemos al carrito
             carrito.push({
                 nombre: nombre,
                 precio: precio

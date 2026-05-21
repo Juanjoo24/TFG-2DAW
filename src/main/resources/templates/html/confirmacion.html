@@ -6,14 +6,86 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>ZapaJuan - Confirmar Pedido</title>
     <style>
-        :root { --main-dark: #1a1a1a; }
-        body { background-color: #f8f9fa; font-family: 'Inter', sans-serif; }
-        .card { border-radius: 20px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .form-control { border-radius: 10px; padding: 12px; border: 1px solid #ddd; margin-bottom: 15px; }
-        .total-price { font-size: 2.2rem; color: var(--main-dark); font-weight: 800; display: block; margin: 20px 0; }
-        .btn-pay { padding: 16px; border-radius: 12px; background-color: var(--main-dark); border: none; color: white; width: 100%; font-weight: bold; cursor: pointer; }
+        :root { 
+            --main-dark: #8B5A2B;
+            --main-hover: #704822; 
+        }
         
+        body { 
+            margin: 0;
+            font-family: 'Inter', sans-serif; 
+                        background: linear-gradient(rgba(14, 14, 18, 0.75), rgba(20, 20, 26, 0.85)), 
+                        url('https://images.unsplash.com/photo-1750590357126-1bc50096df82?fm=jpg&q=60&w=3000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
 
+        .card { 
+            border: none;
+            border-radius: 20px; 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            color: #1a1a1a;
+        }
+
+        .table {
+            color: #1a1a1a !important;
+        }
+        
+        .form-control { 
+            border-radius: 12px; 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            background: #ffffff;
+            color: #1a1a1a;
+            margin-bottom: 15px; 
+            transition: all 0.3s ease;
+        }
+
+        .form-control::placeholder {
+            color: #999;
+        }
+
+        .form-control:focus {
+            background: #ffffff;
+            color: #1a1a1a;
+            border-color: var(--main-dark);
+            box-shadow: 0 0 10px rgba(139, 90, 43, 0.2);
+        }
+
+        .total-price { 
+            font-size: 2.2rem; 
+            color: #1a1a1a; 
+            font-weight: 800; 
+            display: block; 
+            margin: 20px 0; 
+        }
+
+        .btn-pay { 
+            padding: 16px; 
+            border-radius: 12px; 
+            background-color: var(--main-dark); 
+            border: none; 
+            color: white; 
+            width: 100%; 
+            font-weight: 800; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer; 
+            transition: all 0.2s ease;
+        }
+
+        .btn-pay:hover {
+            background-color: var(--main-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+        
         .back-link {
             display: block !important;
             text-align: center;
@@ -21,6 +93,11 @@
             color: #666 !important;
             text-decoration: none !important;
             font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--main-dark) !important;
         }
 
         .btn-delete {
@@ -30,6 +107,19 @@
             font-weight: bold;
             font-size: 1.2rem;
             cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-delete:hover {
+            transform: scale(1.1);
+        }
+
+        hr {
+            border-color: #eee;
+        }
+
+        .text-success {
+            color: #198754 !important; 
         }
     </style>
 </head>
@@ -39,7 +129,7 @@
             
             <div class="col-lg-8">
                 <div class="card p-4 mb-4">
-                    <h4 class="fw-bold mb-4">Tu Cesta</h4>
+                    <h4 class="fw-bold mb-4 text-uppercase" style="letter-spacing: 1px;">Tu Cesta</h4>
                     <table class="table table-borderless align-middle">
                         <tbody id="lista-carrito">
                             </tbody>
@@ -47,14 +137,15 @@
                 </div>
 
                 <div class="card p-4">
-                    <h4 class="fw-bold mb-4">Datos de Envío</h4>
-                    <form id="form-registro">
+                    <h4 class="fw-bold mb-4 text-uppercase" style="letter-spacing: 1px;">Datos de Envío</h4>
+                    
+                    <form id="form-registro" novalidate>
                         <input type="email" id="email-input" class="form-control" placeholder="Correo electrónico" required>
                         <input type="text" id="direccion-input" class="form-control" placeholder="Dirección de entrega" required>
                         <div class="row g-2">
-                            <div class="col-12"><input type="text" class="form-control" placeholder="Nº Tarjeta" required></div>
-                            <div class="col-6"><input type="text" class="form-control" placeholder="MM/AA" required></div>
-                            <div class="col-6"><input type="password" class="form-control" placeholder="CVC" required></div>
+                            <div class="col-12"><input type="text" id="tarjeta-input" class="form-control" placeholder="Nº Tarjeta" required></div>
+                            <div class="col-6"><input type="text" id="fecha-input" class="form-control" placeholder="MM/AA" required></div>
+                            <div class="col-6"><input type="password" id="cvc-input" class="form-control" placeholder="CVC" required></div>
                         </div>
                     </form>
                 </div>
@@ -62,9 +153,9 @@
 
             <div class="col-lg-4">
                 <div class="card p-4 sticky-top" style="top: 20px;">
-                    <h4 class="fw-bold">Resumen</h4>
+                    <h4 class="fw-bold text-uppercase" style="letter-spacing: 1px;">Resumen</h4>
                     <div class="d-flex justify-content-between">
-                        <span>Envío</span>
+                        <span class="text-muted">Envío</span>
                         <span class="text-success fw-bold">GRATIS</span>
                     </div>
                     <hr>
@@ -85,6 +176,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script th:src="@{/js/confirmacion.js}"></script>
 </body>
 </html>

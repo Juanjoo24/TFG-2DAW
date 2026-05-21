@@ -1,25 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', () => {
+
     const buscador = document.querySelector('.search-input');
-    // Cogemos todos los divs que envuelven las tarjetas de zapatillas
-    const zapatillas = document.querySelectorAll('.producto-item'); 
+    const zapatillas = document.querySelectorAll('.producto-item');
 
-    if (buscador) {
-        buscador.addEventListener('input', function(e) {
-            const texto = e.target.value.toLowerCase();
+    buscador.addEventListener('input', (e) => {
 
-            zapatillas.forEach(function(zapa) {
-                // Sacamos el nombre y la marca de la tarjeta
-                const marca = zapa.querySelector('p').innerText.toLowerCase();
-                const nombre = zapa.querySelector('h6').innerText.toLowerCase();
+        const texto = e.target.value.toLowerCase();
 
-                // Si el texto coincide con algo, se muestra, si no se oculta
-                if (marca.includes(texto) || nombre.includes(texto)) {
-                    zapa.style.display = 'block';
-                } else {
-                    zapa.style.display = 'none';
-                }
-            });
+        zapatillas.forEach((zapa) => {
+
+            const marca = zapa.querySelector('p').innerText.toLowerCase();
+            const nombre = zapa.querySelector('h6').innerText.toLowerCase();
+
+            if (marca.includes(texto) || nombre.includes(texto)) {
+                zapa.style.display = '';
+            } else {
+                zapa.style.display = 'none';
+            }
         });
-    }
+    });
 });

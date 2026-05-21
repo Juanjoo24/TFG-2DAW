@@ -4,139 +4,212 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <title>ZapaJuan | Tienda de zapatillas</title>
     
     <style>
-        :root {
-			--main-dark: #1a1a1a;
-			--brown: #8B4513;
-        }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #f4f4f4; 
-        }
+		body {
+		    margin: 0;
+		    font-family: 'Inter', sans-serif;
+		    min-height: 100vh;
+		    
+		    background: linear-gradient(rgba(14, 14, 18, 0.78), rgba(20, 20, 26, 0.85)), 
+		                url('https://images.unsplash.com/photo-1750590357126-1bc50096df82?fm=jpg&q=60&w=3000');
+		    
+		    background-size: cover;
+		    background-position: center;
+		    background-attachment: fixed; 
+		    background-repeat: no-repeat;
+		}
 
-        /* NAVBAR*/
-        .custom-navbar {
-            background: white;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .brand-text {
-            letter-spacing: -1.5px;
-            font-size: 1.75rem;
-            color: var(--brown);
-            font-weight: 800;
-        }
+		/* NAVBAR */
 
-        .nav-side-block {
-            width: 300px;
-            flex-shrink: 0;
-        }
+		.custom-navbar {
+		    background: white;
+		    padding: 12px 0;
+		    border-bottom: 1px solid #eee;
+		}
 
-        .search-container {
-            position: relative;
-            flex-grow: 1;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .search-input {
-            background-color: #f0f0f0;
-            border: 1px solid #e0e0e0;
-            border-radius: 50px;
-            padding: 12px 20px 12px 52px;
-            outline: none;
-            width: 100%;
-            transition: 0.3s;
-        }
-        .search-input:focus {
-            background-color: #fff;
-            border-color: #006341;
-        }
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #555;
-            z-index: 10;
-        }
+		.brand-text {
+		    font-size: 28px;
+		    font-weight: 800;
+		    color: #8B4513;
+		    letter-spacing: -1px;
+		}
 
-        /* Botones Login/Registro */
-        .btn-access {
-            font-weight: 700;
-            border-radius: 50px;
-            padding: 8px 24px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
+		.nav-side-block {
+		    min-width: 200px;
+		}
 
-        @media (max-width: 992px) {
-            .nav-side-block { width: auto; }
-            .search-container { max-width: 100%; margin: 15px 0; }
-        }
+		.search-container {
+		    position: relative;
+		    flex-grow: 1;
+		    max-width: 600px;
+		    margin: 0 auto;
+		}
 
-        /* CARRUSEL DINÁMICO */
-        .carousel-inner { border-radius: 20px; overflow: hidden; }
-        .promo-banner {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 40px 60px; color: white; height: 350px;
-        }
-        .promo-content h2 {
-            font-size: 3rem; font-weight: 900; line-height: 1;
-            letter-spacing: -1px; text-transform: uppercase;
-        }
-        .promo-images img { 
-            max-height: 280px; 
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
-        }
+		.search-input {
+		    width: 100%;
+		    padding: 12px 20px 12px 50px;
+		    border-radius: 40px;
+		    border: 1px solid #ddd;
+		    background: #f0f0f0;
+		    outline: none;
+		}
 
-        /* TARJETAS */
-        .card {
-            border-radius: 12px; transition: all 0.3s ease;
-            border: 1px solid #eee; height: 100%; overflow: hidden;
-            background: white;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
-        }
-        .card-img-top {
-            padding: 20px;
-            background: #f9f9f9;
-            height: 250px;
-            object-fit: contain;
-            transition: transform 0.4s ease;
-        }
-        .card:hover .card-img-top { transform: scale(1.08); }
+		.search-input:focus {
+		    background: white;
+		    border-color: #8B4513;
+		}
 
-        .btn-dark-card {
-            background: var(--main-dark); 
-            color: white;
-            border-radius: 0; 
-            text-transform: uppercase;
-            font-weight: 800; 
-            padding: 14px; 
-            width: 100%;
-            border: none;
-            font-size: 0.8rem;
-        }
-        .price-tag { 
-            font-size: 1.4rem; 
-            color: var(--main-dark);
-            font-weight: 800; 
-        }
+		.search-icon {
+		    position: absolute;
+		    left: 18px;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    color: #666;
+		}
+
+		/* BOTONES */
+
+		.btn-access {
+		    border-radius: 30px;
+		    padding: 8px 20px;
+		    font-weight: bold;
+		    font-size: 13px;
+		    text-transform: uppercase;
+		}
+
+		/* RESPONSIVE */
+
+		@media (max-width: 992px) {
+
+		    .custom-navbar .container-fluid {
+		        flex-direction: column;
+		        align-items: stretch;
+		    }
+
+		    .navbar-brand {
+		        text-align: center;
+		        width: 100%;
+		        margin-bottom: 10px;
+		    }
+
+		    .search-container {
+		        width: 100%;
+		        margin: 10px 0;
+		    }
+
+		    .nav-side-block {
+		        width: 100%;
+		        display: flex;
+		        flex-direction: column;
+		        gap: 10px;
+		        align-items: center;
+		    }
+
+		    .btn-access {
+		        width: 100%;
+		        max-width: 250px;
+		    }
+		}
+
+		/* CARRUSEL */
+
+		.carousel-inner {
+		    border-radius: 15px;
+		    overflow: hidden;
+		}
+
+		.promo-banner {
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    padding: 40px;
+		    color: white;
+		    height: 350px;
+		}
+
+		.promo-content h2 {
+		    font-size: 40px;
+		    font-weight: 900;
+		    text-transform: uppercase;
+		}
+
+		.promo-images img {
+		    max-height: 250px;
+		}
+
+		/* TARJETAS */
+
+		.card {
+		    border: 1px solid #eee;
+		    border-radius: 10px;
+		    overflow: hidden;
+		    transition: 0.3s;
+		    background: white;
+		}
+
+		.card:hover {
+		    transform: translateY(-8px);
+		    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+		}
+
+		.card-img-top {
+		    height: 250px;
+		    object-fit: contain;
+		    background: #f9f9f9;
+		    padding: 15px;
+		}
+
+		.btn-dark-card {
+		    width: 100%;
+		    padding: 12px;
+		    border: none;
+		    background: #1a1a1a;
+		    color: white;
+		    font-weight: bold;
+		    text-transform: uppercase;
+		}
+
+		.price-tag {
+		    font-size: 20px;
+		    font-weight: bold;
+		    color: #1a1a1a;
+		}
+
+		#btn-finalizar .btn-primary {
+		    background: #8B5A2B !important;
+		    border: none;
+		    box-shadow: 0 8px 30px rgba(139, 90, 43, 0.4) !important;
+		    transition: all 0.3s ease;
+		}
+
+		#btn-finalizar .btn-primary:hover {
+		    background: #704822 !important;
+		    transform: scale(1.05);
+		}
+
+		@media (max-width: 576px) {
+		    #btn-finalizar {
+		        right: 0 !important;
+		        left: 0 !important;
+		        bottom: 20px !important;
+		        text-align: center;
+		        padding: 0 20px;
+		    }
+		    #btn-finalizar .btn-primary {
+		        width: 100%;
+		    }
+		}
     </style>
 </head>
 <body>
 
-    <!-- Navbar  -->
     <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
         <div class="container-fluid px-lg-5 d-flex align-items-center">
 
-            <!--Logo -->
             <div class="nav-side-block">
                 <a class="navbar-brand d-flex align-items-center" th:href="@{/}">
                     <img th:src="@{/imagenes/logoTienda.png}" alt="Logo" style="height: 50px;">
@@ -144,12 +217,10 @@
                 </a>
             </div>
 
-            <!-- Botón Móvil -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- buscador -->
             <div class="collapse navbar-collapse" id="navContent">
                 <div class="search-container">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
@@ -167,11 +238,9 @@
         </div>
     </nav>
 
-    <!-- Carrusel -->
     <div class="container mt-4">
         <div id="promoSlider" class="carousel slide shadow-lg" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <!-- Slide 1 -->
                 <div class="carousel-item active" data-bs-interval="4000">
                     <div class="promo-banner" style="background-color: #bc0000;">
                         <div class="promo-content">
@@ -183,7 +252,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Slide 2 -->
                 <div class="carousel-item" data-bs-interval="4000">
                     <div class="promo-banner" style="background-color: #1a1a1a;">
                         <div class="promo-content">
@@ -195,7 +263,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Slide 3 -->
                 <div class="carousel-item" data-bs-interval="4000">
                     <div class="promo-banner" style="background-color: #4b533a;">
                         <div class="promo-content">
@@ -217,158 +284,198 @@
         </div>
     </div>
 
-    <!-- Sección de Productos -->
-    <main class="container mt-5 mb-5">
-        <h3 class="fw-black mb-4">LO ÚLTIMO EN ZAPAJUAN</h3>
-        <div class="row g-4">
+	<main class="container mt-5 mb-5">
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/jordan_1_retro.png}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Nike</p>
-                        <h6 class="fw-bold">Jordan 1 Retro High</h6>
-                        <p class="price-tag">218.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	    <div class="row g-4">
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Saucony_ProGrid_Omni_9.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Saucony</p>
-                        <h6 class="fw-bold">ProGrid Omni 9</h6>
-                        <p class="price-tag">99.30€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/jordan_1_retro.png}" class="card-img-top">
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/arimax.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Nike</p>
-                        <h6 class="fw-bold">Air Max 95 OG</h6>
-                        <p class="price-tag">203.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Nike</p>
+	                    <h6 class="fw-bold">Jordan 1 Retro High</h6>
+	                    <p class="price-tag">218.00€</p>
+	                </div>
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/adidas_forum_low.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Adidas</p>
-                        <h6 class="fw-bold">Forum Low White</h6>
-                        <p class="price-tag">110.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/New_Balance_550.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">New Balance</p>
-                        <h6 class="fw-bold">NB 550 Vintage</h6>
-                        <p class="price-tag">145.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Saucony_ProGrid_Omni_9.jpg}" class="card-img-top">
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Yeezy_Boost_350.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Yeezy</p>
-                        <h6 class="fw-bold">Boost 350 V2</h6>
-                        <p class="price-tag">230.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Saucony</p>
+	                    <h6 class="fw-bold">ProGrid Omni 9</h6>
+	                    <p class="price-tag">99.30€</p>
+	                </div>
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Nike_Dunk_Low.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Nike</p>
-                        <h6 class="fw-bold">Dunk Low Panda</h6>
-                        <p class="price-tag">120.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Converse_Chuck_70.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Converse</p>
-                        <h6 class="fw-bold">Chuck 70 High</h6>
-                        <p class="price-tag">95.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/arimax.jpg}" class="card-img-top">
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Asics_Gel-Lyte III.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Asics</p>
-                        <h6 class="fw-bold">Gel-Lyte III</h6>
-                        <p class="price-tag">160.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Nike</p>
+	                    <h6 class="fw-bold">Air Max 95 OG</h6>
+	                    <p class="price-tag">203.00€</p>
+	                </div>
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Vans_Old_Skool.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Vans</p>
-                        <h6 class="fw-bold">Old Skool Classic</h6>
-                        <p class="price-tag">75.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
 
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="card shadow-sm">
-                    <img th:src="@{/imagenes/Puma_MB.01.jpg}" class="card-img-top">
-                    <div class="card-body text-center">
-                        <p class="text-muted small text-uppercase mb-1">Puma</p>
-                        <h6 class="fw-bold">Puma MB.01 Red</h6>
-                        <p class="price-tag">130.00€</p>
-                    </div>
-                    <button class="btn-dark-card">Añadir al carrito</button>
-                </div>
-            </div>
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/adidas_forum_low.jpg}" class="card-img-top">
 
-        </div>
-    </main>
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Adidas</p>
+	                    <h6 class="fw-bold">Forum Low White</h6>
+	                    <p class="price-tag">110.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/New_Balance_550.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">New Balance</p>
+	                    <h6 class="fw-bold">NB 550 Vintage</h6>
+	                    <p class="price-tag">145.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Yeezy_Boost_350.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Yeezy</p>
+	                    <h6 class="fw-bold">Boost 350 V2</h6>
+	                    <p class="price-tag">230.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Nike_Dunk_Low.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Nike</p>
+	                    <h6 class="fw-bold">Dunk Low Panda</h6>
+	                    <p class="price-tag">120.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Converse_Chuck_70.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Converse</p>
+	                    <h6 class="fw-bold">Chuck 70 High</h6>
+	                    <p class="price-tag">95.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Asics_Gel-Lyte III.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Asics</p>
+	                    <h6 class="fw-bold">Gel-Lyte III</h6>
+	                    <p class="price-tag">160.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Vans_Old_Skool.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Vans</p>
+	                    <h6 class="fw-bold">Old Skool Classic</h6>
+	                    <p class="price-tag">75.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	        <div class="col-md-6 col-lg-4 col-xl-3 producto-item">
+	            <div class="card shadow-sm">
+	                <img th:src="@{/imagenes/Puma_MB.01.jpg}" class="card-img-top">
+
+	                <div class="card-body text-center">
+	                    <p class="text-muted small text-uppercase mb-1">Puma</p>
+	                    <h6 class="fw-bold">Puma MB.01 Red</h6>
+	                    <p class="price-tag">130.00€</p>
+	                </div>
+
+	                <button class="btn-dark-card">Añadir al carrito</button>
+	            </div>
+	        </div>
+
+	    </div>
+	</main>
 	
-	<!-- Boton de cesta -->
-	<div id="btn-finalizar" style="position: fixed; bottom: 25px; right: 25px; z-index: 1000; display: none;">
+	<div id="btn-finalizar" th:if="${nombreUsuario != null}" style="position: fixed; bottom: 25px; right: 25px; z-index: 1000; display: none;">
 	    <a th:href="@{/confirmacion}" class="btn btn-primary btn-lg rounded-pill shadow-lg px-5 py-3 fw-bold">
 	        IR A LA CESTA (<span id="count-final">0</span>)
 	    </a>
 	</div>
 
-    <footer class="py-5 bg-white border-top text-center text-muted small">
-        <p class="fw-bold text-dark text-uppercase">ZapaJuan Sneakers Store</p>
-        <p>&copy; 2026. Todos los derechos reservados.</p>
-    </footer>
-
+	<footer class="py-5 bg-light border-top">
+	    <div class="container text-center">
+	        <h3 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 2px;">
+	        ZapaJuan las mejores<span class="text-danger"> zapatillas</span>
+	        </h3>
+	        <p class="text-muted small mb-4">Llevando tu estilo al siguiente nivel.</p>
+	        
+			<div class="mb-4">
+			            <p class="fw-bold text-uppercase small text-muted mb-3">Síguenos en nuestras redes</p>
+			            <div class="d-flex justify-content-center gap-3">
+			                <a href="#" class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;" title="Instagram">
+			                    <i class="bi bi-instagram fs-5"></i>
+			                </a>
+			                <a href="#" class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;" title="TikTok">
+			                    <i class="bi bi-tiktok fs-5"></i>
+			                </a>
+			                <a href="#" class="btn btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;" title="Facebook">
+			                    <i class="bi bi-facebook fs-5"></i>
+			                </a>
+			            </div>
+			        </div>
+	        <p class="text-muted small mb-0">&copy; 2026 ZapaJuan. Todos los derechos reservados.</p>
+	    </div>
+	</footer>
+	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script th:src="@{/js/buscador.js}"></script>
 	<script th:src="@{/js/index-tienda.js}"></script>
