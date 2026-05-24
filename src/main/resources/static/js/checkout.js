@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (res.ok) {
                 localStorage.removeItem('carrito');
                 Swal.fire({ icon: 'success', title: '¡Compra realizada!', text: 'Gracias por confiar en ZapaJuan', confirmButtonColor: '#8B5A2B' })
-                    .then(() => window.location.href = "/index");
+                    .then(() => window.location.href = "/bienvenida");
             } else {
                 Swal.fire({ icon: 'error', title: 'Error en el servidor', text: 'Inténtalo de nuevo más tarde', confirmButtonColor: '#8B5A2B' });
             }
