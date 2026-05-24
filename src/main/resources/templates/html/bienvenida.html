@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
     <title>ZapaJuan | Bienvenido</title>
     
     <style>
@@ -185,18 +184,17 @@
 				}
 
 				.floating-checkout .btn-primary {
-				    background: #8B5A2B !important; 
+				    background: #8B5A2B ; 
 				    border: none;
-				    box-shadow: 0 8px 30px rgba(139, 90, 43, 0.4) !important;
+				    box-shadow: 0 8px 30px rgba(139, 90, 43, 0.4) ;
 				    transition: all 0.3s ease;
 				}
 
 				.floating-checkout .btn-primary:hover {
-				    background: #704822 !important;
+				    background: #704822 ;
 				    transform: scale(1.05);
 				}
 
-				/* Si es pantalla de móvil, se centra abajo  */
 				@media (max-width: 576px) {
 				    .floating-checkout {
 				        right: 0;
@@ -460,9 +458,9 @@
 	  	</main>
 	  	
 
-    <div id="btn-finalizar" class="floating-checkout" style="display: none;">
+    <div id="btn-finalizar" class="floating-checkout" th:style="${carritoSize > 0} ? 'display: block;' : 'display: none;'">
         <a th:href="@{/confirmacion}" class="btn btn-primary btn-lg rounded-pill shadow-lg px-5 py-3 fw-bold">
-            IR A LA CESTA (<span id="count-final">0</span>)
+            IR A LA CESTA (<span id="count-final" th:text="${carritoSize}">0</span>)
         </a>
     </div>
 
@@ -493,6 +491,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script th:src="@{/js/buscador.js}"></script>
-	<script th:src="@{/js/index-tienda.js}"></script>
+	<script th:src="@{/js/tienda-usuario.js}"></script>
 </body>
 </html>

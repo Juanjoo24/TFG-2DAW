@@ -53,8 +53,8 @@
         .input-group-custom .form-control {
             border: none;
             padding: 12px 12px 12px 0;
-            color: #1a1a1a !important;
-            box-shadow: none !important;
+            color: #1a1a1a ;
+            box-shadow: none ;
         }
 
         .input-group-custom .form-control::placeholder {
@@ -87,27 +87,25 @@
         }
         .link-register:hover {
             color: #bd2130;
-            text-decoration: underline !important;
+            text-decoration: underline;
         }
         .link-back {
-            color: #6c757d !important;
+            color: #6c757d ;
         }
         .link-back:hover {
-            color: #1a1a1a !important;
+            color: #1a1a1a;
         }
     </style>
 </head>
 <body>
     
     <div class="main-wrapper">
-        <!-- Logo de la tienda -->
         <header class="mb-4">
             <a th:href="@{/}" class="d-inline-block">
                 <img th:src="@{/imagenes/logoTienda.png}" alt="Logo ZapaJuan" style="height: 80px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">
             </a>
         </header>
         
-        <!--  Formulario -->
         <div class="card login-card">
             <div class="card-body p-4 p-md-5">
                 <h2 class="card-title text-center mb-2 fw-bold text-dark text-uppercase" style="letter-spacing: 1px;">Bienvenido</h2>

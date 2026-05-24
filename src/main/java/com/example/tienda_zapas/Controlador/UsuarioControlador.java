@@ -2,6 +2,7 @@ package com.example.tienda_zapas.Controlador;
 
 import com.example.tienda_zapas.entidad.Usuario;
 import com.example.tienda_zapas.Repositorio.UsuarioRepositorio;
+import com.example.tienda_zapas.Repositorio.CarritoItemRepositorio; // <- Añadido el import
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,35 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
+    private CarritoItemRepositorio carritoItemRepositorio; 
+
     @GetMapping("/")
     public String index() {
         return "html/index";
+    }
+    
+    
+    
+    @GetMapping("/carrito/checkout")
+    public String mostrarCheckout() {
+        return "html/checkout"; 
     }
 
     @GetMapping("/bienvenida")
     public String paginaBienvenida(HttpSession session, Model model) {
         String usuario = (String) session.getAttribute("nombreUsuario");
         if (usuario == null) return "redirect:/login";
+        
+        // Buscamos las zapas que tiene el usuario en su base de datos
+        Usuario u = usuarioRepositorio.findByUsuario(usuario);
+        int itemsEnCarrito = 0;
+        if (u != null) {
+            itemsEnCarrito = carritoItemRepositorio.findByUsuario(u).size();
+        }
+        
         model.addAttribute("nombreUsuario", usuario);
+        model.addAttribute("carritoSize", itemsEnCarrito); 
         return "html/bienvenida";
     }
 
@@ -37,7 +57,7 @@ public class UsuarioControlador {
         
         if (u != null) {
             model.addAttribute("nombreUsuario", u.getUsuario());
-           
+            model.addAttribute("email", u.getEmail()); 
         }
 
         return "html/confirmacion";

@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Validar Email
         if (email.value.trim() === "") {
             Swal.fire({
                 icon: 'error',
@@ -106,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Validar Nombre de Usuario
         if (usuario.value.trim() === "") {
             Swal.fire({
                 icon: 'error',
@@ -126,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Validar Contraseña
         if (contrasena.value === "") {
             Swal.fire({
                 icon: 'error',
